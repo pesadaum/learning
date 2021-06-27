@@ -1,0 +1,14 @@
+CREATE TABLE FUNCIONARIO(
+	Pnome VARCHAR(15) NOT NULL,
+	Minicial CHAR,
+	Unome VARCHAR(15) NOT NULL, 
+	Cpf CHAR(11) NOT NULL,
+	Datanasc DATE,
+	Endereço VARCHAR(30),
+	Sexo CHAR,
+	Salario DECIMAL(10,2),
+	Cpf_supervisor CHAR(11),
+	Dnr INT
+	PRIMARY KEY (Cpf),
+	FOREIGN KEY (Cpf_supervisor) REFERENCES FUNCIONARIO(Cpf),
+	FOREIGN KEY (Dnr) REFERENCES DEPARTAMENTO(Dnumero) );

@@ -3,34 +3,31 @@
 
 using namespace std;
 
-void forcaBruta(string T, int n, string P, int m)
+void forcaBruta(string T, string P)
 {
+
+  int tamanho_texto = T.length();
+  int tamanho_padrao = P.length();
   int i, j, k;
-  for (i = 1; i <= (n - m + 1); i++)
+  for (i = 1; i <= (tamanho_texto - tamanho_padrao + 1); i++)
   {
     k = i;
     j = 1;
-    while (T[k - 1] == P[j - 1] && j <= m)
+    while (T[k - 1] == P[j - 1] && j <= tamanho_padrao)
     {
       j++;
       k++;
     }
-    if (j > m)
+    if (j > tamanho_padrao)
       cout << "Casamento na posição " << i << endl;
   }
-}
-
-void forcaBruta_2(string T, string P)
-{
 }
 
 int main()
 {
   string Texto = "maco macaco camaco ccamoa amaco caamomacaco";
   string Padrao = "macaco";
-  int tamanho_texto = Texto.length();
-  int tamanho_padrao = Padrao.length();
 
-  forcaBruta(Texto, tamanho_texto, Padrao, tamanho_padrao);
+  forcaBruta(Texto, Padrao);
   return 0;
 }

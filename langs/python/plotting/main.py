@@ -5,6 +5,8 @@ time = []
 v_out = []
 v_cap_diff = []
 
+plt_v_cap_diff = plt
+
 # Certificar que a primeira linha é o header
 with open('nmos_inicial.csv', 'r') as csv:
     data = DictReader(csv)
@@ -17,8 +19,12 @@ plt.rc('text', usetex=True)
 plt.rc('font', family='serif')
 plt.ticklabel_format(axis="x", style="sci", scilimits=(0, 0))
 
-plt.plot(time, v_out)
-plt.savefig('teste.eps')
-
-plt.plot(time, v_cap_diff)
-plt.savefig("v_cap_diff.eps")
+plt_v_cap_diff.plot(time, v_out, label=r'$V_{cap}$')
+plt_v_cap_diff.plot(time, v_cap_diff, ":", label=r'$V_{out}$')
+plt_v_cap_diff.legend(loc='upper right')
+plt_v_cap_diff.xlabel(r"tempo $[s]$")
+plt_v_cap_diff.ylabel(r"tensão $[V]$")
+plt_v_cap_diff.title(
+    r"\textbf{Tensão diferencial no capacitor, tensão de saída $\times$ tempo}")
+plt_v_cap_diff.show()
+# plt.savefig('nome_figura.eps')
